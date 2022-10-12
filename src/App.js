@@ -1,12 +1,11 @@
 import React from "react";
-
-import styles from "./styles.css";
+import Landing from "./pages/Landing";
 
 function App() {
   return (
-    <>
-      <h2>Hi</h2>
-    </>
+    <div>
+      <Landing />
+    </div>
   );
 }
 
