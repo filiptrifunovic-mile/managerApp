@@ -5,7 +5,7 @@ import styles from "./styles.css";
 function App() {
   return (
     <>
-      <div>Hi</div>
+      <h2>Hi</h2>
     </>
   );
 }
