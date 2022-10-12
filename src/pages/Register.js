@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Logo } from "../components";
+import { Logo, FormRow } from "../components";
 import Wrapper from "../assets/wrappers/RegisterPage";
 
 const initialState = {
@@ -10,38 +10,72 @@ const initialState = {
 };
 
 function Register() {
+  // state
+
   const [values, setValues] = useState(initialState);
 
+  // functions
+
   function handleChange(e) {
-    console.log(e.target);
+    const name = e.target.name;
+    const value = e.target.value;
+
+    setValues({ ...values, [name]: value });
   }
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    console.log(e.target);
+    const { name, email, password, isMember } = values;
+
+    if (!email || !password || (!isMember && !name)) {
+      console.log("Please fill out all fields");
+    }
+  }
+
+  function toggleMember() {
+    setValues({ ...values, isMember: !values.isMember });
   }
 
   return (
     <Wrapper className="full-page">
       <form className="form" onSubmit={handleSubmit}>
         <Logo />
-        <h3>Login</h3>
-        <div className="form-row">
-          <label htmlFor="name" className="form-label">
-            name
-          </label>
-          <input
+        <h3>{values.isMember ? "Login" : "Register"}</h3>
+        {/* name field */}
+
+        {!values.isMember && (
+          <FormRow
             type="text"
-            className="form-input"
             name="name"
             value={values.name}
-            onChange={handleChange}
+            handleChange={handleChange}
           />
-        </div>
+        )}
+        {/* email field  */}
+        <FormRow
+          type="email"
+          name="email"
+          value={values.email}
+          handleChange={handleChange}
+        />
+        {/* password field  */}
+        <FormRow
+          type="password"
+          name="password"
+          value={values.password}
+          handleChange={handleChange}
+        />
         <button type="submit" className="btn btn-block">
           Submit
         </button>
+        <p>
+          {values.isMember ? "Not a member yet?" : "Already a member?"}
+
+          <button type="button" onClick={toggleMember} className="member-btn">
+            {values.isMember ? "Register" : "Login"}
+          </button>
+        </p>
       </form>
     </Wrapper>
   );
