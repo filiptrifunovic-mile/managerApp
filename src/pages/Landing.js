@@ -6,9 +6,7 @@ import styled from "styled-components";
 function Landing() {
   return (
     <Wrapper>
-      <nav>
-        <Logo />
-      </nav>
+      <nav>{/* <Logo /> */}</nav>
       <div className="container page">
         {/* info */}
         <div className="info">

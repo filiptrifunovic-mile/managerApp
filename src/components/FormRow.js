@@ -5,6 +5,7 @@ function FormRow({ type, name, value, handleChange, labelText }) {
         {labelText || name}
       </label>
       <input
+        id={name}
         type={type}
         className="form-input"
         name={name}

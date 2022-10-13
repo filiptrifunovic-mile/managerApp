@@ -1,5 +1,5 @@
 import Navlinks from "./Navlinks";
-import Logo from "../components/Logo";
+// import Logo from "../components/Logo";
 import Wrapper from "../assets/wrappers/BigSidebar";
 import { useSelector } from "react-redux";
 
@@ -16,9 +16,7 @@ function BigSidebar() {
         }
       >
         <div className="content">
-          <header>
-            <Logo />
-          </header>
+          <header>{/* <Logo /> */}</header>
           <Navlinks />
         </div>
       </div>
