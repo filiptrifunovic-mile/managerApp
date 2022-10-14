@@ -2,6 +2,7 @@ import { FormRow, FormRowSelect } from "../../components";
 import Wrapper from "../../assets/wrappers/DashboardFormPage";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+import { handleChange, clearValues } from "../../features/job/jobSlice";
 
 function AddJob() {
   const {
@@ -17,6 +18,8 @@ function AddJob() {
     editJobId,
   } = useSelector((store) => store.job);
 
+  const dispatch = useDispatch();
+
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -29,6 +32,8 @@ function AddJob() {
   function handleJobInput(e) {
     const name = e.target.name;
     const value = e.target.value;
+
+    dispatch(handleChange({ name, value }));
   }
 
   return (
@@ -83,7 +88,7 @@ function AddJob() {
             <button
               type="button"
               className="btn btn-block clear-btn"
-              onClick={() => console.log("clear")}
+              onClick={() => dispatch(clearValues())}
             >
               Clear
             </button>
